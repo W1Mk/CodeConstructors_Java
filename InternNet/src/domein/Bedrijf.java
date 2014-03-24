@@ -37,7 +37,10 @@ public class Bedrijf implements Serializable //gebruik van implementatie seriali
     }
 
     //constructor, aanmaken van een bedrijf
-    public Bedrijf(int id, String naam, String email, String url, String telefoon, String paswoord, String adres, String bedrijfsactiviteit, String bereikbaarheid, StageOpdracht stageOpdracht) {
+    public Bedrijf(int id, String naam, String email, String url, 
+            String telefoon, String paswoord, String adres, 
+            String bedrijfsactiviteit, String bereikbaarheid, 
+            StageOpdracht stageOpdracht) {
         this.id = id;
         this.naam = naam;
         this.email = email;

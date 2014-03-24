@@ -6,6 +6,9 @@
 
 package controllers;
 
+import domein.Bedrijf;
+import domein.StageOpdracht;
+
 /**
  *
  * @author Wim

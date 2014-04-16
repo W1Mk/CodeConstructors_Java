@@ -33,6 +33,9 @@ public class Bedrijf implements Serializable //gebruik van implementatie seriali
     @ManyToOne
     private StageOpdracht stageOpdracht;
 
+    public Bedrijf() {
+    }
+
     public Bedrijf(int id) {
     }
 

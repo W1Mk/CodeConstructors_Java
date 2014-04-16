@@ -46,3 +46,8 @@ public class BedrijfController
     // als u wijziging annuleert terug naar manager scherm
     // als u wijzigingen doorvoert, bevistiging geven en dan ook naar manager scherm
 }
+
+
+// Parent root = FXMLLoader.load(getClass().getResource("fxml_example.fxml"));
+// Scene scene = new Scene(root, 300, 275);
+//

@@ -27,7 +27,7 @@ public class BedrijfController
     private TextField bedrijfsactiviteitTF;
     private TextField bereikbaarheidTF;
     
-    private Bedrijf bedrijf;
+    private Bedrijf bedrijf; 
     
     // login/register bedrijf
     // 2 buttons op een scherm (fxml)

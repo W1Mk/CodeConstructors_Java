@@ -13,6 +13,16 @@ import domein.StageOpdracht;
  *
  * @author Wim
  */
-public class BedrijfController {
+public class BedrijfController 
+{
+    // login/register bedrijf
+    
+    // bedrijfregistratie scherm
+    
+    // toon bedrijf, bedrijf "manager" scherm
+    
+    // wijziging scherm 
+    
+    // verwijder bedrijf scherm
     
 }

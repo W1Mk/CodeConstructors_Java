@@ -35,5 +35,57 @@ public class StageOpdrachtMapper
         return op;
     }
     
+    public StageOpdracht findBegeleider(int id)
+    {
+        ph.start();
+        StageOpdracht o = ph.getEm().find(StageOpdracht.class, id);
+        ph.end();
+        return o;
+    }
     
+    public void removeBegeleider(int id)
+    {
+        ph.start();
+        StageOpdracht o = ph.getEm().find(StageOpdracht.class, id);
+        if (o != null)
+        {
+            ph.getEm().remove(o);
+        }
+        ph.end();
+    }
+    
+    public StageOpdracht update(int id, String naam, String semester,
+     String omschrijving, String specialisatie)
+    {
+        ph.start();
+        
+        StageOpdracht o = ph.getEm().find(StageOpdracht.class, id);
+        
+        if (o != null)
+        {
+            if (o.getNaam() != naam && naam != null)
+            {
+                o.setNaam(naam);
+            }
+            
+            if (o.getOmschrijving() != omschrijving && omschrijving != null)
+            {
+                o.setOmschrijving(omschrijving);
+            }
+            
+            if (o.getSemester() != semester && semester != null)
+            {
+                o.setSemester(semester);
+            }
+            
+            if (o.getSpecialisatie() != specialisatie && specialisatie != null)
+            {
+                o.setSpecialisatie(specialisatie);
+            }
+        }
+        
+        ph.end();
+        
+        return o;
+    }
 }

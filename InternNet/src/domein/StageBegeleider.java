@@ -19,8 +19,9 @@ import javax.persistence.OneToOne;
 public class StageBegeleider implements Serializable
 {
     @Id
-     private int id;
-     private String naam;
+    private int id;
+    
+    private String naam;
     @OneToOne(mappedBy = "stagebegeleider")
     private StageOpdracht stageBegeleider;
 

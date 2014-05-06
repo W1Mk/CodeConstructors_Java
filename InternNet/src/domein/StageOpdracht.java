@@ -22,14 +22,19 @@ public class StageOpdracht implements Serializable
 {
     @Id
     private int id;
+    
     private String naam;
+    
     @OneToOne
     private Student student;
+    
     private String semester;
     private String omschrijving;
     private String specialisatie;
+    
     @OneToOne
     private StageBegeleider stagebegeleider;
+    
     @OneToMany(mappedBy = "stageOpdracht")
     private List<Bedrijf> stages;
 

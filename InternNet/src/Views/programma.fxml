@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="517.0" prefWidth="772.0" styleClass="programma" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Controllers.ProgrammaController">
+  <children>
+    <MenuBar layoutX="1.0" layoutY="1.0" prefWidth="771.0">
+      <menus>
+        <Menu mnemonicParsing="false" style="" text="Menu">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#MenuAcademieJaar" style="" text="Academiejaar aanpassen" />
+            <MenuItem mnemonicParsing="false" style="" text="Sluiten" />
+          </items>
+        </Menu>
+      </menus>
+      <stylesheets>
+        <URL value="@../css/programma.css" />
+      </stylesheets>
+    </MenuBar>
+    <ToolBar id="buttongoedkeuren" fx:id="toolbar" cache="false" focusTraversable="false" layoutX="1.0" layoutY="476.0" mouseTransparent="false" opacity="1.0" orientation="HORIZONTAL" prefHeight="43.0" prefWidth="771.0">
+      <items>
+        <Button fx:id="buttonStageOpdrachten" cancelButton="false" defaultButton="false" mnemonicParsing="false" onAction="#ButtonStageOpdrachten" styleClass="button-tool-bar" text="Stageopdrachten" />
+        <Button fx:id="buttonBegeleiders" mnemonicParsing="false" onAction="#ButtonBegeleider" styleClass="button-tool-bar" text="Begeleider" />
+        <Button id="buttonBegeleiders" fx:id="Student" mnemonicParsing="false" onAction="#ButtonStudent" styleClass="button-tool-bar" text="Student" />
+        <Button id="buttonBegeleiders" fx:id="Buttonstagecontract" mnemonicParsing="false" onAction="#ButtonStageContract" styleClass="button-tool-bar" text="Stagecontract" />
+        <Button fx:id="buttongoedkeuren" disable="true" mnemonicParsing="false" onAction="#goedkeuren" styleClass="button-tool-bar" text="goedkeuren" />
+        <Button fx:id="buttonafkeuren" disable="true" mnemonicParsing="false" onAction="#afkeuren" styleClass="button-tool-bar" text="afkeuren" />
+      </items>
+    </ToolBar>
+    <Pane fx:id="PaneStageOpdrachten" layoutX="14.0" layoutY="14.0" prefHeight="390.0" prefWidth="744.0" visible="false">
+      <children>
+        <TableView fx:id="tableStageOpdrachten" editable="true" layoutX="29.0" layoutY="68.0" opacity="1.0" prefHeight="207.0" prefWidth="687.0" tableMenuButtonVisible="false" visible="true">
+          <columns>
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="114.0" text="naam" fx:id="kolomnaam" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="59.0" text="semester" fx:id="kolomsemester" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="165.0" text="omschrijving" fx:id="kolomomschrijving" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="126.0" text="specialisatie" fx:id="kolomspecialisatie" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="125.0" text="stagementor" fx:id="kolomstagementor" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="95.0" text="status" fx:id="kolomstatus" />
+          </columns>
+        </TableView>
+      </children>
+    </Pane>
+    <Pane fx:id="PaneBegeleiders" layoutX="15.0" layoutY="62.0" prefHeight="322.0" prefWidth="736.0" visible="false">
+      <children>
+        <TableView fx:id="tablebegeleider" layoutX="10.0" layoutY="118.0" prefHeight="135.5" prefWidth="712.0">
+          <columns>
+            <TableColumn maxWidth="5000.0" minWidth="1.0" prefWidth="113.0" text="naam" fx:id="kolombegeleidernaam" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="64.0" text="semester" fx:id="kolombegeleidersemester" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="122.0" text="omschrijving" fx:id="kolombegeleideromschrijving" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="123.0" text="specialisatie" fx:id="kolombegeleiderspecialisatie" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="119.0" text="stagementor" fx:id="kolombegeleiderstagementor" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="86.0" text="aantalstudenten" fx:id="kolombegeleideraantalstudenten" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="status" fx:id="kolombegeleiderstatus" />
+          </columns>
+        </TableView>
+        <Button id="buttonafkeuren" fx:id="buttonvolgende" disable="false" layoutX="368.0" layoutY="270.0" mnemonicParsing="false" onAction="#Buttonvolgende" text="volgende" />
+        <Button id="buttonafkeuren" fx:id="buttonvorige" disable="false" layoutX="312.0" layoutY="270.0" mnemonicParsing="false" onAction="#Buttonvorige" text="vorige" />
+        <Label fx:id="lblnaam" layoutX="44.0" layoutY="23.0" text="naam">
+          <font>
+            <Font size="14.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Label fx:id="lblvoornaam" font="$x1" layoutX="44.0" layoutY="39.0" text="voornaam" />
+        <Label fx:id="lbladres" font="$x1" layoutX="44.0" layoutY="73.0" text="adres" />
+        <Label id="lbladres" fx:id="lbltelefoon" font="$x1" layoutX="296.0" layoutY="23.0" text="telefoon" />
+        <Label id="lbladres" fx:id="lblemail" font="$x1" layoutX="44.0" layoutY="56.0" text="email" />
+        <Label id="lbladres" fx:id="lblgsm" font="$x1" layoutX="296.0" layoutY="42.0" text="gsm" />
+        <Label id="lblnaam" font="$x1" layoutX="14.0" layoutY="97.0" text="stageopdrachten:" />
+        <Label id="lblnaam" font="$x1" layoutX="43.0" layoutY="0.0" text="Begeleider:" textAlignment="LEFT" textOverrun="CLIP" underline="false" />
+      </children>
+    </Pane>
+    <Pane fx:id="PaneStudent" layoutX="11.0" layoutY="21.0" prefHeight="351.0" prefWidth="748.0" visible="false">
+      <children>
+        <Label id="lbladres" fx:id="lblStudentAdres" font="$x1" layoutX="58.0" layoutY="101.0" text="adres" />
+        <Label fx:id="lblStudentEmail" font="$x1" layoutX="58.0" layoutY="82.0" text="email" />
+        <Label fx:id="lblStudentGsm" font="$x1" layoutX="58.0" layoutY="120.0" text="gsm" />
+        <Label fx:id="lblStudentKeuzeVak" font="$x1" layoutX="58.0" layoutY="158.0" text="keuzevak" />
+        <Label fx:id="lblStudentNaam" font="$x1" layoutX="58.0" layoutY="64.0" text="naam" />
+        <Label fx:id="lblStudentTweedeEmail" font="$x1" layoutX="58.0" layoutY="139.0" text="tweede email" />
+        <Label fx:id="lblStudentBeginStage" font="$x1" layoutX="318.0" layoutY="64.0" text="beginstage" />
+        <Label fx:id="lblStudentEindeStage" font="$x1" layoutX="318.0" layoutY="101.0" text="eindestage" />
+        <Button fx:id="buttonStudentVorige" layoutX="189.0" layoutY="216.0" mnemonicParsing="false" onAction="#ButtonStudentVorige" text="vorige" />
+        <Button fx:id="buttonStudentVolgende" layoutX="374.0" layoutY="216.0" mnemonicParsing="false" onAction="#ButtonStudentVolgende" text="volgende" />
+        <TextField id="txtbeginstage" fx:id="txtBeginStage" layoutX="398.0" layoutY="62.0" prefWidth="111.0" />
+        <TextField fx:id="txtEindeStage" layoutX="398.0" layoutY="101.0" prefWidth="111.0" />
+        <Button id="buttonStudentVolgende" fx:id="buttonOpslaan" layoutX="277.0" layoutY="216.0" mnemonicParsing="false" onAction="#ButtonOpslaan" text="Opslaan" />
+        <Label id="lblStudentNaam" font="$x1" layoutX="58.0" layoutY="43.0" text="Student:" />
+      </children>
+    </Pane>
+    <Pane fx:id="PaneStageContract" layoutX="14.0" layoutY="14.0" prefHeight="412.0" prefWidth="735.0" visible="false">
+      <children>
+        <ListView fx:id="ListViewStudent" layoutX="14.0" layoutY="45.0" prefHeight="269.0" prefWidth="707.0" />
+        <Button fx:id="StageContractenMaken" layoutX="295.0" layoutY="347.0" mnemonicParsing="false" onAction="#StageContractenMaken" text="Stagecontracten maken" />
+      </children>
+    </Pane>
+  </children>
+  <stylesheets>
+    <URL value="@../css/programma.css" />
+  </stylesheets>
+</AnchorPane>

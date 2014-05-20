@@ -1,0 +1,113 @@
+/* 
+    Document   : css
+    Created on : Apr 30, 2014, 2:12:13 PM
+    Author     : laurens
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+.programma{
+   -fx-background-color: #BDEDFF;
+}
+.menu-bar{
+  -fx-background-color: #34282C;
+  -fx-border-color:  #27332F;
+ -fx-border-width: 2
+
+}
+
+.menu-bar .label {
+    -fx-font-size: 15 pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #dedede;
+    display:block;
+}
+.menu{
+ display: block;
+ 
+}
+.menu.label{
+    -fx-text-fill: black;
+    -fx-border-color: black;
+}
+.menu:hover {
+    -fx-background-color: #2C3539;
+    display:block;
+}
+
+.menu-item{
+     -fx-font-size: 20 pt;
+      -fx-background-color: #34282C;
+      -fx-border-color:  #27332F;
+      
+}
+.menu-item.label{
+     -fx-font-size: 20 pt;
+      -fx-background-color: #34282C;
+      -fx-border-color:  #27332F;
+}
+.tool-bar{
+    -fx-background-color: #34282C;
+    -fx-border-width: 2
+}
+.button-tool-bar{
+  -fx-background: #3498db;
+  -fx-webkit-border-radius: 20;
+  -fx-moz-border-radius: 20;
+  -fx-border-radius: 20px;
+  -fx-font-family: Arial;
+  -fx-color: #2980b9;
+  -fx-font-size: 15px;
+  -fx-padding: 10px 20px 10px 20px;
+  -fx-text-decoration: none;
+   
+}
+.button-tool-bar:hover{
+  -fx-background: #3498db;
+  -fx-webkit-border-radius: 20;
+  -fx-moz-border-radius: 20;
+  -fx-border-radius: 20px;
+  -fx-font-family: Arial;
+  -fx-color: #3498db;
+  -fx-font-size: 15px;
+  -fx-padding: 10px 20px 10px 20px;
+  -fx-text-decoration: none;
+}
+.button-tool-bar:pressed{
+    -fx-background: #3498db;
+  -fx-webkit-border-radius: 20;
+  -fx-moz-border-radius: 20;
+  -fx-border-radius: 20px;
+  -fx-font-family: Arial;
+  -fx-color: #9cd7ff;
+  -fx-font-size: 15px;
+  -fx-padding: 10px 20px 10px 20px;
+  -fx-text-decoration: none;
+}
+.button-tool-bar:active{
+   -fx-background: #3498db;
+  -fx-webkit-border-radius: 20;
+  -fx-moz-border-radius: 20;
+  -fx-border-radius: 20px;
+  -fx-font-family: Arial;
+  -fx-color: #9cd7ff;
+  -fx-font-size: 15px;
+  -fx-padding: 10px 20px 10px 20px;
+  -fx-text-decoration: none;
+}
+.button{
+    -fx-color:#110980;
+    
+}
+.table-view{
+    -fx-background-color: #BDEDFF;
+    -fx-color:#2980b9;
+}
+.label{
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size:14px;
+    
+}

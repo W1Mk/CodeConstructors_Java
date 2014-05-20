@@ -1,161 +1,117 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package domein;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-/**
- *
- * @author Wim
- */
 @Entity
-public class Bedrijf implements Serializable //gebruik van implementatie serializable 
-// is voor het beter wegschrijven/opslaan ... in een bestand of db
-{
-    @Id //bepalen wat de sleutelwaarder is
-    private int id;
-    
-    private String naam;
-    private String email;
-    private String url;
-    private String telefoon;
-    private String paswoord;
-    private String adres;
-    private String bedrijfsactiviteit;
-    private String bereikbaarheid;
-    @ManyToOne
-    private StageOpdracht stageOpdracht;
+
+@Table (name="Bedrijf")
+
+public class Bedrijf implements Serializable {
+    @Id
+    private int BedrijfId;
+    private String Bedrijfsnaam;
+    private String Email;
+    private String Telefoon;
+    private String Adres;
+    private String Url;
+    private String Wachtwoord;
+    private String BedrijfsActiviteit;
+    private String Bereikbaarheid;
 
     public Bedrijf() {
     }
 
-    public Bedrijf(int id) {
+    public Bedrijf(int BedrijfId, String Bedrijfsnaam, String Email, String Telefoon, String Adres, String Url, String Wachtwoord, String BedrijfsActiviteit, String Bereikbaarheid) {
+        this.BedrijfId = BedrijfId;
+        this.Bedrijfsnaam = Bedrijfsnaam;
+        this.Email = Email;
+        this.Telefoon = Telefoon;
+        this.Adres = Adres;
+        this.Url = Url;
+        this.Wachtwoord = Wachtwoord;
+        this.BedrijfsActiviteit = BedrijfsActiviteit;
+        this.Bereikbaarheid = Bereikbaarheid;
     }
 
-    //constructor, aanmaken van een bedrijf
-    public Bedrijf(int id, String naam, String email, String url, 
-            String telefoon, String paswoord, String adres, 
-            String bedrijfsactiviteit, String bereikbaarheid, 
-            StageOpdracht stageOpdracht) {
-        this.id = id;
-        this.naam = naam;
-        this.email = email;
-        this.url = url;
-        this.telefoon = telefoon;
-        this.paswoord = paswoord;
-        this.adres = adres;
-        this.bedrijfsactiviteit = bedrijfsactiviteit;
-        this.bereikbaarheid = bereikbaarheid;
-        this.stageOpdracht = stageOpdracht;
-        
-    }
-    
-    // opvragen id 
-    public int getId() {
-        return id;
+    public int getBedrijfId() {
+        return BedrijfId;
     }
 
-    // wijzigen id
-    public void setId(int id) {
-        this.id = id;
+    public String getBedrijfsnaam() {
+        return Bedrijfsnaam;
     }
 
-    // opvragen naam
-    public String getNaam() {
-        return naam;
-    }
-
-    // wijzigen naam
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
-    // opvragen mail
     public String getEmail() {
-        return email;
+        return Email;
     }
 
-    // wijzigen mail
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    // opvragen url
-    public String getUrl() {
-        return url;
-    }
-
-    // wijzigen url
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    // opvragen telefoon
     public String getTelefoon() {
-        return telefoon;
+        return Telefoon;
     }
 
-    // wijzigen telefoon
-    public void setTelefoon(String telefoon) {
-        this.telefoon = telefoon;
-    }
-
-    // opvragen wachtwoord
-    public String getPaswoord() {
-        return paswoord;
-    }
-
-    // wijzigen paswoord
-    public void setPaswoord(String paswoord) {
-        this.paswoord = paswoord;
-    }
-
-    // opvragen adres
     public String getAdres() {
-        return adres;
+        return Adres;
     }
 
-    // wijzigen adres
-    public void setAdres(String adres) {
-        this.adres = adres;
+    public String getUrl() {
+        return Url;
     }
 
-    // opvragen bedrijfsactiviteit
-    public String getBedrijfsactiviteit() {
-        return bedrijfsactiviteit;
+    public String getWachtwoord() {
+        return Wachtwoord;
     }
 
-    // wijzigen bedrijfsactiviteit
-    public void setBedrijfsactiviteit(String bedrijfsactiviteit) {
-        this.bedrijfsactiviteit = bedrijfsactiviteit;
+    public String getBedrijfsActiviteit() {
+        return BedrijfsActiviteit;
     }
 
-    // opvragen bereikbaarheid 
     public String getBereikbaarheid() {
-        return bereikbaarheid;
+        return Bereikbaarheid;
     }
 
-    // wijzigen bereikbaarheid
-    public void setBereikbaarheid(String bereikbaarheid) {
-        this.bereikbaarheid = bereikbaarheid;
+    public void setBedrijfId(int BedrijfId) {
+        this.BedrijfId = BedrijfId;
     }
 
-    // opvragen stageopdracht
-    public StageOpdracht getStageOpdracht() {
-        return stageOpdracht;
+    public void setBedrijfsnaam(String Bedrijfsnaam) {
+        this.Bedrijfsnaam = Bedrijfsnaam;
     }
 
-    // wijzigen stageopdracht
-    public void setStageOpdracht(StageOpdracht stageOpdracht) {
-        this.stageOpdracht = stageOpdracht;
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public void setTelefoon(String Telefoon) {
+        this.Telefoon = Telefoon;
+    }
+
+    public void setAdres(String Adres) {
+        this.Adres = Adres;
+    }
+
+    public void setUrl(String Url) {
+        this.Url = Url;
+    }
+
+    public void setWachtwoord(String Wachtwoord) {
+        this.Wachtwoord = Wachtwoord;
+    }
+
+    public void setBedrijfsActiviteit(String BedrijfsActiviteit) {
+        this.BedrijfsActiviteit = BedrijfsActiviteit;
+    }
+
+    public void setBereikbaarheid(String Bereikbaarheid) {
+        this.Bereikbaarheid = Bereikbaarheid;
     }
     
-    //bedrijf verwijderen?
+    
+    
 }

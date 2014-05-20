@@ -1,69 +1,166 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package domein;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.Query;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
- * @author Wim
+ * @author laurens
  */
 @Entity
-public class Student implements Serializable
-{
-    @Id
-    private int id;
-    private String naam;
-    private String email;
-    @OneToOne(mappedBy = "student")
-    private StageOpdracht student;
+
+@Table (name="student")
+public class Student implements Serializable {
+         @Id
+         private int StudentId;
+         private String Naam;
+         private String Email;
+         private String TweedeEmail;
+         private String Wachtwoord;
+         private String Adres;
+         private String Gsm;
+         private String KeuzeVak;
+         @Temporal(TemporalType.DATE)
+         private Date BeginDatum;
+         @Temporal(TemporalType.DATE)
+         private Date EindeDatum;
+         private String StageContract;
+         @ManyToMany(mappedBy="Studenten")
+         private Collection<StageOpdracht> Stages;
+        
 
     public Student() {
+       
     }
 
-    // Constructor, aanmaken nieuwe student
-    public Student(int id, String naam, String email) {
-        this.id = id;
-        this.naam = naam;
-        this.email = email;
+    public Student(int StudentId, String Naam, String Email, String TweedeEmail, String Wachtwoord, String Gsm, String KeuzeVak, List<StageOpdracht> stageopdracht) {
+        this.StudentId = StudentId;
+        this.Naam = Naam;
+        this.Email = Email;
+        this.TweedeEmail = TweedeEmail;
+        this.Wachtwoord = Wachtwoord;
+        this.Gsm = Gsm;
+        this.KeuzeVak = KeuzeVak;
+       
     }
 
-    // opvragen id
-    public int getId() {
-        return id;
+    public void setStageContract(String StageContract) {
+        this.StageContract = StageContract;
     }
 
-    // wijzigen id
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    // opvragen naam
-    public String getNaam() {
-        return naam;
-    }
-
-    // wijzigen naam
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
-    // opvragen mail
-    public String getEmail() {
-        return email;
-    }
-
-    // wijzigen mail
-    public void setEmail(String email) {
-        this.email = email;
+    public String getStageContract() {
+        return StageContract;
     }
     
-    // verwijderen student?
+
+    public void setBeginDatum(Date BeginDatum) {
+        this.BeginDatum = BeginDatum;
+    }
+
+    public void setEindeDatum(Date EindeDatum) {
+        this.EindeDatum = EindeDatum;
+    }
+
+  /*  public void setStages(Collection<StageOpdracht> stages) {
+        this.Stages = stages;
+    }*/
+
+    public Date getBeginDatum() {
+        return BeginDatum;
+    }
+
+    public Date getEindeDatum() {
+        return EindeDatum;
+    }
+
+    public Collection<StageOpdracht> getStages() {
+        return Stages;
+    }
+
+    public void setStudentId(int StudentId) {
+        this.StudentId = StudentId;
+    }
+
+    public void setNaam(String Naam) {
+        this.Naam = Naam;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public void setTweedeEmail(String TweedeEmail) {
+        this.TweedeEmail = TweedeEmail;
+    }
+
+    public void setWachtwoord(String Wachtwoord) {
+        this.Wachtwoord = Wachtwoord;
+    }
+
+    public void setAdres(String Adres) {
+        this.Adres = Adres;
+    }
+
+    public void setGsm(String Gsm) {
+        this.Gsm = Gsm;
+    }
+
+    public void setKeuzeVak(String KeuzeVak) {
+        this.KeuzeVak = KeuzeVak;
+    }
+
+    public int getStudentId() {
+        return StudentId;
+    }
+
+    public String getNaam() {
+        return Naam;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public String getTweedeEmail() {
+        return TweedeEmail;
+    }
+
+    public String getWachtwoord() {
+        return Wachtwoord;
+    }
+
+    public String getAdres() {
+        return Adres;
+    }
+
+    public String getGsm() {
+        return Gsm;
+    }
+
+    public String getKeuzeVak() {
+        return KeuzeVak;
+    }
+
+   public List<Student> StudentList(EntityManager em){
+       em.clear();
+       Query query = em.createQuery("select x from Student x where x.BeginDatum IS NOT NULL AND x.StageContract ='geen' OR x.StageContract ='gemaakt'",Student.class);
+        return query.getResultList();
+       
+   }
+         
+         
 }

@@ -1,132 +1,182 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package domein;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Query;
+import javax.persistence.Table;
 
 /**
  *
- * @author Wim
+ * @author laurens
  */
 @Entity
-public class StageOpdracht implements Serializable
-{
-    @Id
-    private int id;
-    
-    private String naam;
-    
-    @OneToOne
-    private Student student;
-    
-    private String semester;
-    private String omschrijving;
-    private String specialisatie;
-    
-    @OneToOne
-    private StageBegeleider stagebegeleider;
-    
-    @OneToMany(mappedBy = "stageOpdracht")
-    private List<Bedrijf> stages;
 
-    public StageOpdracht() {
+@Table (name="StageOpdracht")
+
+
+public class StageOpdracht implements Serializable {
+     @Id
+     
+    private int StageOpdrachtid;
+    private String Naam;
+    private String Omschrijving;
+    private int Semester;
+    private String Specialisatie;
+    private String StageMentor;
+    private int AantalStudenten;
+    private String Status;
+    private String Status2;
+    @ManyToOne
+    @JoinColumn(name = "BegeleiderFK")
+    private StageBegeleider Stagebegeleider;
+    @ManyToOne
+    @JoinColumn(name = "BedrijfFK")
+    private Bedrijf Bedrijf;
+    @JoinTable(name="studentstageopdracht1",joinColumns = {@JoinColumn(name = "StageOpdrachtid",referencedColumnName="StageOpdrachtid")},inverseJoinColumns=@JoinColumn(name="StudentId",referencedColumnName="StudentId"))
+    @ManyToMany
+    private Collection<Student> Studenten;
+    private String AcademieJaar;
+
+    public int getStageOpdrachtid() {
+        return StageOpdrachtid;
     }
 
-    // Constructor,  aanmaken/aanvragen nieuwe opdracht
-    public StageOpdracht(int id, String naam, Student student, String semester, String omschrijving, String specialisatie, StageBegeleider stagebegeleider) {
-        this.id = id;
-        this.naam = naam;
-        this.student = student;
-        this.semester = semester;
-        this.omschrijving = omschrijving;
-        this.specialisatie = specialisatie;
-        this.stagebegeleider = stagebegeleider;
-    }
-    
-    
-
-    // opvragen id
-    public int getId() {
-        return id;
-    }
-
-    // wijzigen id
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    // opvragen naam 
     public String getNaam() {
-        return naam;
+        return Naam;
     }
 
-    // wijzigen naam
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
-    // opvragen semester
-    public String getSemester() {
-        return semester;
-    }
-
-    // wijzigen semester
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
-
-    // opvragen omschrijving
     public String getOmschrijving() {
-        return omschrijving;
+        return Omschrijving;
     }
 
-    // wijzigen omschrijving
-    public void setOmschrijving(String omschrijving) {
-        this.omschrijving = omschrijving;
+    public int getSemester() {
+        return Semester;
     }
 
-    // opvragen specialisatie
     public String getSpecialisatie() {
-        return specialisatie;
+        return Specialisatie;
     }
 
-    // wijzigen specialisatie
-    public void setSpecialisatie(String specialisatie) {
-        this.specialisatie = specialisatie;
+    public String getStageMentor() {
+        return StageMentor;
     }
 
-    // opvragen aangewezen begeleider
+    public int getAantalStudenten() {
+        return AantalStudenten;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public String getStatus2() {
+        return Status2;
+    }
+
     public StageBegeleider getStagebegeleider() {
-        return stagebegeleider;
+        return Stagebegeleider;
     }
 
-    // begeleider vervangen
-    public void setStagebegeleider(StageBegeleider stagebegeleider) {
-        this.stagebegeleider = stagebegeleider;
+    public Bedrijf getBedrijf() {
+        return Bedrijf;
     }
 
-    // begeleider verwijderen van de opdracht?
+    public Collection<Student> getStudenten() {
+        return Studenten;
+    }
+
+    public String getAcademieJaar() {
+        return AcademieJaar;
+    }
+
+    public void setStageOpdrachtid(int StageOpdrachtid) {
+        this.StageOpdrachtid = StageOpdrachtid;
+    }
+
+    public void setNaam(String Naam) {
+        this.Naam = Naam;
+    }
+
+    public void setOmschrijving(String Omschrijving) {
+        this.Omschrijving = Omschrijving;
+    }
+
+    public void setSemester(int Semester) {
+        this.Semester = Semester;
+    }
+
+    public void setSpecialisatie(String Specialisatie) {
+        this.Specialisatie = Specialisatie;
+    }
+
+    public void setStageMentor(String StageMentor) {
+        this.StageMentor = StageMentor;
+    }
+
+    public void setAantalStudenten(int AantalStudenten) {
+        this.AantalStudenten = AantalStudenten;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
+
+    public void setStatus2(String Status2) {
+        this.Status2 = Status2;
+    }
+
+    public void setStagebegeleider(StageBegeleider Stagebegeleider) {
+        this.Stagebegeleider = Stagebegeleider;
+    }
+
+    public void setBedrijf(Bedrijf Bedrijf) {
+        this.Bedrijf = Bedrijf;
+    }
+
+    public void setStudenten(Collection<Student> Studenten) {
+        this.Studenten = Studenten;
+    }
+
+    public void setAcademieJaar(String AcademieJaar) {
+        this.AcademieJaar = AcademieJaar;
+    }
+
+    public StageOpdracht(int StageOpdrachtid, String Naam, String Omschrijving, int Semester, String Specialisatie, String StageMentor, int AantalStudenten, String Status, String Status2, StageBegeleider Stagebegeleider, Bedrijf Bedrijf, Collection<Student> Studenten, String AcademieJaar) {
+        this.StageOpdrachtid = StageOpdrachtid;
+        this.Naam = Naam;
+        this.Omschrijving = Omschrijving;
+        this.Semester = Semester;
+        this.Specialisatie = Specialisatie;
+        this.StageMentor = StageMentor;
+        this.AantalStudenten = AantalStudenten;
+        this.Status = Status;
+        this.Status2 = Status2;
+        this.Stagebegeleider = Stagebegeleider;
+        this.Bedrijf = Bedrijf;
+        this.Studenten = Studenten;
+        this.AcademieJaar = AcademieJaar;
+    }
     
-    // opvragen welk student de stage mag doen
-    public Student getStudent() {
-        return student;
+    public StageOpdracht(){
+        
     }
-
-    // een andere student kiezen
-    public void setStudent(Student student) {
-        this.student = student;
+    public List<StageOpdracht> StageOpdrachtList(EntityManager em){
+         em.clear();
+         AcademieJaar ac = new AcademieJaar();
+       Query query = em.createQuery("select x from StageOpdracht x where x.AcademieJaar='"+ac.lijstAcademieJaar(em).iterator().next().getAcademieJaar()+"'",StageOpdracht.class);
+         return query.getResultList();
+        
     }
-
-    // student uit de opdracht verwijdern?
-    
-    // opdracht verwijderen?
 }
